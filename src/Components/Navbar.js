@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-export const Navbar = () => {
+const Navbar = () => {
   const [theme, setTheme] = useState("light");
   useEffect(() => {
     if (theme === "light") {
@@ -30,3 +30,5 @@ export const Navbar = () => {
     </nav>
   );
 };
+
+export default Navbar;
