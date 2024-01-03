@@ -38,7 +38,7 @@ const Component_1_SignUp = () => {
               Re-enter your password
             </p>
             <input
-              className="bg-white-300 p-2 rounded-xl sm:w-64 bg-zinc-400"
+              className="bg-white-300 p-2 rounded-xl sm:w-64 bg-orange-400"
               type="password"
               value={repassword}
               onChange={(e) => setRepassword(e.target.value)}
