@@ -1,16 +1,18 @@
 import { useState } from "react";
-import cred from "../Screen1-LandingScreen/Credential.json";
+import cred from "../../Components/Credential.json";
+import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 const Component_2_Signin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const Navigate = useNavigate();
-  const handleLoginFunctionality = async() => {
+  const handleLoginFunctionality = async () => {
     const response = await Create_Account_Functionality(email, password);
-    if(response === undefined){
+    if (response === undefined) {
       return;
-    }else{
+    } else {
       const token = response.token;
+      Cookies.set('ACCESS_TOKEN',token);
       const path = response.path;
       Navigate(path);
     }
@@ -62,11 +64,11 @@ async function Create_Account_Functionality(email, password) {
   });
   if (get_api_response.ok) {
     const login_api_response = await get_api_response.json();
-    return login_api_response
-  }else{
+    return login_api_response;
+  } else {
     const statusCode = get_api_response.status;
-    if(statusCode===404){
-      alert('User does not exists/Invalid credentials');
+    if (statusCode === 404) {
+      alert("User does not exists/Invalid credentials");
     }
   }
 }
